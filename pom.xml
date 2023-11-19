@@ -105,6 +105,7 @@
                         <include>**/Test*.java</include>
                         <include>**/When*.java</include>
                         <include>**/*Story.java</include>
+                        <include>**/Verify*.java</include>
                     </includes>
                     <argLine>-Xmx512m</argLine>
                 </configuration>

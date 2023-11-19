@@ -1,7 +1,8 @@
 package baymax.sky.eCommerce.features;
 
 import baymax.sky.eCommerce.enities.Account;
-import baymax.sky.eCommerce.tasks.FileCheck;
+import baymax.sky.eCommerce.enities.ProductInformation;
+import baymax.sky.eCommerce.tasks.Create;
 import baymax.sky.eCommerce.tasks.Login;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -13,27 +14,23 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-public class WhenUploadingSuccessfully {
+public class VerifyProductPage {
     Actor sun = Actor.named("Sun");
     Account admin = new Account("admin@example.com", "123456");
-    //    Path filePath = Paths.get("C:/Users/HP/Desktop/ISTQB Recap/1_7+ISO+Standards.pdf");
-    String filePath = "C:/Users/HP/Desktop/ISTQB Recap/1_7+ISO+Standards.pdf";
-    String fileName = "1_7+ISO+Standards.pdf";
-
+    ProductInformation productInfor = new ProductInformation("Sleeping light","BMW","KG",1,"suncd","10",20,"Percent",5);
     @Managed(uniqueSession = true)
-    public WebDriver sunDriver;
+    public WebDriver driver;
 
     @Before
     public void sunCanBrowserTheWeb() {
-        sun.can(BrowseTheWeb.with(sunDriver));
+        sun.can(BrowseTheWeb.with(driver));
     }
 
     @Test
-    public void upload_PDF_file_successfully() {
+    public void create_a_new_product_successfully() {
         sun.attemptsTo(
                 Login.asUser(admin),
-                FileCheck.upload(filePath),
-                FileCheck.download(fileName)
+                Create.product(productInfor)
         );
     }
 }
