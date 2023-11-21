@@ -1,7 +1,7 @@
 package baymax.sky.eCommerce.features;
 
 import baymax.sky.eCommerce.enities.Account;
-import baymax.sky.eCommerce.tasks.FileCheck;
+import baymax.sky.eCommerce.tasks.File;
 import baymax.sky.eCommerce.tasks.Login;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -16,9 +16,9 @@ import org.openqa.selenium.WebDriver;
 public class WhenUploadingSuccessfully {
     Actor sun = Actor.named("Sun");
     Account admin = new Account("admin@example.com", "123456");
-    //    Path filePath = Paths.get("C:/Users/HP/Desktop/ISTQB Recap/1_7+ISO+Standards.pdf");
     String filePath = "C:/Users/HP/Desktop/ISTQB Recap/1_7+ISO+Standards.pdf";
     String fileName = "1_7+ISO+Standards.pdf";
+    String downloadFilePath = "D:/Sun/Automation Testing/" + fileName;
 
     @Managed(uniqueSession = true)
     public WebDriver sunDriver;
@@ -32,8 +32,8 @@ public class WhenUploadingSuccessfully {
     public void upload_PDF_file_successfully() {
         sun.attemptsTo(
                 Login.asUser(admin),
-                FileCheck.upload(filePath),
-                FileCheck.download(fileName)
+                File.upload(filePath),
+                File.download(fileName,downloadFilePath)
         );
     }
 }

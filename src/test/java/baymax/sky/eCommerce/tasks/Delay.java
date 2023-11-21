@@ -13,8 +13,15 @@ public class Delay {
         }
         return null;
     }
-/*    public static Performable waitForCompletedDownload(){
-        File
+
+    public static Performable toCheckExistingFile(String filePath) {
+        File existingFile = new File(filePath);
+        if (existingFile.exists()) {
+            System.out.println("File existed");
+        } else {
+            System.out.println("File not found");
+        }
         return null;
-    }*/
+    }
+
 }
