@@ -11,7 +11,7 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
 
 public class Login {
-    public static Performable asUser(Account account){
+    public static Performable asUser(Account account) {
         return Task.where("login as a valid user", actor -> actor.attemptsTo(
                 Open.browserOn().the(HomePage.class),
                 Enter.theValue(account.getEmailAddress()).into(LoginUI.EMAIL_FIELD),
@@ -19,4 +19,5 @@ public class Login {
                 Click.on(LoginUI.LOGIN_BTN)
         ));
     }
+    
 }
