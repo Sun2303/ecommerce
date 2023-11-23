@@ -8,12 +8,14 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 public class ProductInformation {
+    private String productCategory;
+    private String homePageCategory;
     private String name;
     private String brand;
     private String unit;
     private int minimumPurchaseQty;
     private String tag;
-    private String unitPrice;
+    private int unitPrice;
     private float discount;
     private String discountType;
     private int quantity;
