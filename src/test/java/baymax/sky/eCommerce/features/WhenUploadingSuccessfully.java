@@ -1,29 +1,26 @@
 package baymax.sky.eCommerce.features;
 
 import baymax.sky.eCommerce.enities.Account;
+import baymax.sky.eCommerce.tasks.File;
 import baymax.sky.eCommerce.tasks.Login;
-import baymax.sky.eCommerce.tasks.UploadFile;
-import baymax.sky.eCommerce.ui.NavigationBarUI;
-import baymax.sky.eCommerce.ui.UploadUI;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.actions.Click;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 @RunWith(SerenityRunner.class)
-public class WhenLoginAsValidUser {
+public class WhenUploadingSuccessfully {
     Actor sun = Actor.named("Sun");
     Account admin = new Account("admin@example.com", "123456");
-    Path filePath = Paths.get("C:/Users/HP/Desktop/ISTQB Recap/1_7+ISO+Standards.pdf");
-    Path filePathMacOS = Paths.get("/Users/oceansmartqc/Downloads/FileNameTest.pdf");
+    String filePath = "C:/Users/HP/Desktop/ISTQB Recap/1_7+ISO+Standards.pdf";
+    String fileName = "1_7+ISO+Standards.pdf";
+    String fileName02 = "logo-dark.svg";
+    String downloadFilePath = "D:/Sun/Automation Testing/" + fileName;
+    String downloadFilePath02 = "/Users/oceansmartqc/Downloads/" + fileName02;
 
     @Managed(uniqueSession = true)
     public WebDriver sunDriver;
@@ -34,12 +31,11 @@ public class WhenLoginAsValidUser {
     }
 
     @Test
-    public void login_as_an_admin_user_successfully() {
-        sun.wasAbleTo(
+    public void upload_PDF_file_successfully() {
+        sun.attemptsTo(
                 Login.asUser(admin),
-                Click.on(NavigationBarUI.UPLOAD_MENU),
-                Click.on(UploadUI.UPLOAD_BTN),
-                UploadFile.PDFType(filePathMacOS)
+                /*File.upload(filePath),*/
+                File.download(fileName02,downloadFilePath02)
         );
     }
 }
