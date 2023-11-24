@@ -18,9 +18,7 @@ public class WhenUploadingSuccessfully {
     Account admin = new Account("admin@example.com", "123456");
     String filePath = "C:/Users/HP/Desktop/ISTQB Recap/1_7+ISO+Standards.pdf";
     String fileName = "1_7+ISO+Standards.pdf";
-    String fileName02 = "logo-dark.svg";
     String downloadFilePath = "D:/Sun/Automation Testing/" + fileName;
-    String downloadFilePath02 = "/Users/oceansmartqc/Downloads/" + fileName02;
 
     @Managed(uniqueSession = true)
     public WebDriver sunDriver;
@@ -34,8 +32,8 @@ public class WhenUploadingSuccessfully {
     public void upload_PDF_file_successfully() {
         sun.attemptsTo(
                 Login.asUser(admin),
-                /*File.upload(filePath),*/
-                File.download(fileName02,downloadFilePath02)
+                File.upload(filePath),
+                File.download(fileName,downloadFilePath)
         );
     }
 }

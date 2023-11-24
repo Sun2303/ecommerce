@@ -17,7 +17,8 @@ import org.openqa.selenium.WebDriver;
 public class VerifyProductPage {
     Actor sun = Actor.named("Sun");
     Account admin = new Account("admin@example.com", "123456");
-    ProductInformation productInfor = new ProductInformation("Sleeping light","BMW","KG",1,"suncd","10",20,"Percent",5);
+    ProductInformation productInfor = new ProductInformation("Women Clothing & Fashion","Women Clothing & Fashion","Sun Dior Bag","Dior","Pc",100,"SunDior",1000,10,"Percent",5000);
+    ProductInformation productInfor02 = new ProductInformation("Women Clothing & Fashion","Women Clothing & Fashion","Sun Dior Bag","Dior","Pc",100,"SunDior",1000,10,"Percent",5000);
     @Managed(uniqueSession = true)
     public WebDriver driver;
 
@@ -30,7 +31,7 @@ public class VerifyProductPage {
     public void create_a_new_product_successfully() {
         sun.attemptsTo(
                 Login.asUser(admin),
-                Create.product(productInfor)
+                Create.product(productInfor02)
         );
     }
 }
