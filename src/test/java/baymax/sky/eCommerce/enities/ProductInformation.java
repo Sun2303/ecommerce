@@ -19,5 +19,4 @@ public class ProductInformation {
     private float discount;
     private String discountType;
     private int quantity;
-
 }
