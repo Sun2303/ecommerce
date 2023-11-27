@@ -33,8 +33,7 @@ public class WhenUploadingSuccessfully {
         sun.attemptsTo(
                 Login.asUser(admin),
                 File.upload(filePath),
-                File.download(fileName,filePath)
-                /*File.download(fileName)*/
+                File.download(fileName,downloadFilePath)
         );
     }
 }
